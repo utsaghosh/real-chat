@@ -1,8 +1,6 @@
 #!/usr/bin/env node
-// var WebSocketServer = require('websocket').server;
-// var http = require('http');
-import { server as WebSocketServer } from "websocket";
-import http from "http";
+var WebSocketServer = require("websocket").server;
+var http = require("http");
 
 var server = http.createServer(function (request: any, response: any) {
   console.log(new Date() + " Received request for " + request.url);
@@ -28,7 +26,8 @@ function originIsAllowed(origin: string) {
   return true;
 }
 
-wsServer.on("request", function (request) {
+wsServer.on("request", function (request: any) {
+  debugger;
   if (!originIsAllowed(request.origin)) {
     // Make sure we only accept requests from an allowed origin
     request.reject();
@@ -51,7 +50,7 @@ wsServer.on("request", function (request) {
       connection.sendBytes(message.binaryData);
     }
   });
-  connection.on("close", function (reasonCode, description) {
+  connection.on("close", function (reasonCode: any, description: any) {
     console.log(
       new Date() + " Peer " + connection.remoteAddress + " disconnected."
     );

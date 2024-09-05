@@ -1,4 +1,4 @@
-import { Chat, Room, Store } from "./store/Store";
+import { Chat, Room, Store } from "./Store";
 
 let globalChatId = 0;
 class inMemoryStore implements Store {
